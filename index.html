@@ -1,986 +1,250 @@
+// ...existing code...
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helpy + Gobernación de Antioquia | Alianza Estratégica</title>
-    <meta name="description"
-        content="Helpy - Plataforma de atención y acompañamiento para la infancia y adolescencia. Propuesta de alianza con la Gobernación de Antioquia para mejorar cobertura, trazabilidad y gestión social.">
-    <meta name="theme-color" content="#2F855A">
-    <!-- Open Graph / Social -->
-    <meta property="og:title" content="Helpy + Gobernación de Antioquia | Alianza Estratégica">
-    <meta property="og:description" content="Propuesta de alianza para llevar atención preventiva y acompañamiento infantil a todo Antioquia mediante tecnología humana y datos.">
-    <meta property="og:image" content="https://eduardovalenciaabad.github.io/helpy-antioquia/Logos%20Helpy/Sea%20green/Logotipo%20Helpy%20version%20sea%20green.png">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eduardovalenciaabad.github.io/helpy-antioquia/">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://eduardovalenciaabad.github.io/helpy-antioquia/">
-    <link rel="icon" href="https://eduardovalenciaabad.github.io/helpy-antioquia/Logos%20Helpy/Sea%20green/icono%20helpy%20sea%20green.png">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Helpy — Propuesta | Gobernación de Antioquia</title>
+  <meta name="description" content="Helpy: centro operativo de salud preventiva para infancia y adolescencia. Propuesta para la Gobernación de Antioquia."/>
+  <meta name="theme-color" content="#2F855A"/>
+  <link rel="icon" href="./assets/logos/icono-helpy.png" />
 
-        :root {
-            --color-primary: #2F855A;
-            /* Helpy Sea Green primary */
-            --color-accent: #38B2AC;
-            /* Teal accent */
-            --color-baby-blue: #AECFE8;
-            --color-pastel-pink: #F8C8DC;
-            --color-soft: #DFF7EE;
-            /* Soft background tint */
-            --color-white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.22);
-            --glass-border: rgba(47, 133, 90, 0.12);
-            --text-dark: #0f1720;
-            --text-muted: #4A5568;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--text-dark);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Animated Background */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%,
-                    rgba(47, 133, 90, 0.18) 0%,
-                    rgba(56, 178, 172, 0.14) 30%,
-                    rgba(223, 247, 238, 0.12) 60%,
-                    rgba(255, 255, 255, 0.5) 100%);
-            filter: blur(80px);
-            animation: bgShift 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes bgShift {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.1);
-            }
-        }
-
-        /* Typography */
-        h1,
-        h2,
-        h3 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Glassmorphism */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .glass-card:hover {
-            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
-        }
-
-        /* Antigravity Animation */
-        .float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .float-delay-1 {
-            animation-delay: 1s;
-        }
-
-        .float-delay-2 {
-            animation-delay: 2s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        /* Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Layout Utilities */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        /* Sections */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Event Chips */
-        .speakers {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .chip {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #cbd5e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        /* Metrics */
-        .metrics {
-            margin-top: 3rem;
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--color-primary);
-        }
-
-        /* Pricing Table */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            align-items: flex-start;
-        }
-
-        .price-card {
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .price-card.featured {
-            transform: scale(1.05);
-            border: 2px solid rgba(47, 133, 90, 0.12);
-            position: relative;
-        }
-
-        .price-card.featured::before {
-            content: '⭐ Protagonista';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-primary);
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--color-white);
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: var(--color-primary);
-        }
-
-        .price-features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .price-features li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .price-features li::before {
-            content: '✓';
-            color: #48bb78;
-            position: absolute;
-            left: 0;
-        }
-
-        /* CTA */
-        .cta-section {
-            text-align: center;
-            padding: 8rem 0;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-            color: white;
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.25rem;
-            margin-top: 2rem;
-            box-shadow: 0 4px 14px 0 rgba(47, 133, 90, 0.18);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px 0 rgba(47, 133, 90, 0.22);
-        }
-
-        /* Navigation */
-        nav.site-nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 999px;
-            padding: 0.5rem 1rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            z-index: 50;
-            box-shadow: 0 6px 20px rgba(10, 10, 20, 0.08);
-        }
-
-        nav.site-nav img.logo-sm {
-            height: 36px;
-        }
-
-        nav.site-nav a {
-            color: var(--text-dark);
-            font-weight: 600;
-            text-decoration: none;
-            padding: 0.35rem 0.75rem;
-            border-radius: 999px;
-        }
-
-        nav.site-nav a:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        /* Contact Modal */
-        .modal-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 60;
-        }
-
-        .modal {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            max-width: 720px;
-            width: 95%;
-            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.2);
-        }
-
-        .modal form {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .input,
-        textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            border: 1px solid #e6edf3;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: transparent;
-            border: none;
-            font-size: 1.25rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .metrics {
-                flex-direction: column;
-                gap: 2rem;
-            }
-        }
-
-        /* Helpy policy detailed block tweaks to match site visuals */
-        #helpy-policy-detailed .glass-card {
-            padding: 2.5rem;
-        }
-
-        #helpy-policy-detailed .helpy-photo {
-            width: 100%;
-            border-radius: 12px;
-            object-fit: cover;
-            max-height: 320px;
-            box-shadow: 0 8px 30px rgba(47,133,90,0.06);
-        }
-
-        #helpy-policy-detailed .helpy-mosaic img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        #helpy-policy-detailed .section-hr {
-            margin: 2rem 0;
-            border: none;
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-    </style>
+  <style>
+    :root{--green:#2F855A;--teal:#38B2AC;--muted:#6b7280;--glass:rgba(255,255,255,0.7);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"DM Sans",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:#f7faf9;color:#0f1720;line-height:1.5}
+    .container{max-width:1060px;margin:0 auto;padding:2rem}
+    header{position:sticky;top:12px;z-index:30;display:flex;align-items:center;justify-content:space-between;background:transparent;padding:0 1rem}
+    nav a{margin:0 .5rem;color:var(--muted);text-decoration:none;font-weight:600}
+    .hero{min-height:64vh;display:flex;align-items:center;padding:4rem 0}
+    .hero .card{background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0.9));border-radius:16px;padding:2rem;box-shadow:0 10px 30px rgba(15,23,42,0.06)}
+    .hero h1{color:var(--green);margin:0 0 .5rem;font-size:2.25rem}
+    .lead{color:var(--muted);margin:0 0 1rem}
+    section{padding:3rem 0;border-bottom:1px solid rgba(15,23,42,0.04)}
+    h2{color:var(--green);margin-bottom:1rem}
+    ul{margin:0 0 1rem 1.25rem}
+    .grid{display:grid;gap:1.25rem;grid-template-columns:1fr 1fr;align-items:start}
+    .glass{background:var(--glass);padding:1.25rem;border-radius:12px}
+    .mosaic{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+    .mosaic img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+    footer{padding:2rem 0;text-align:center;color:var(--muted)}
+    @media(max-width:840px){.grid{grid-template-columns:1fr}.hero{padding:2rem}.hero h1{font-size:1.5rem}}
+    .logos{display:flex;gap:1rem;align-items:center}
+    .btn{background:linear-gradient(90deg,var(--green),var(--teal));color:#fff;padding:.75rem 1.25rem;border-radius:999px;border:none;cursor:pointer;font-weight:700}
+    .muted{color:var(--muted)}
+    label{display:block;font-weight:600;margin-bottom:.25rem}
+    input,textarea{width:100%;padding:.6rem;border:1px solid #e6edf3;border-radius:8px}
+  </style>
 </head>
-
 <body>
 
-    <!-- Animated Dynamic Background -->
-    <div class="animated-bg"></div>
+  <header class="container" role="banner">
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <a href="./assets/logos/Helpy%20logos.ai" download title="Descargar logo vectorial">
+        <img src="./assets/logos/logohelpy.png" alt="Helpy" style="height:48px">
+      </a>
+      <div>
+        <div style="font-weight:800;color:var(--green)">Helpy</div>
+        <div class="muted" style="font-size:.85rem">Alianza estratégica — Gobernación de Antioquia</div>
+      </div>
+    </div>
 
-    <!-- Navigation -->
-    <nav class="site-nav">
-        <img class="logo-sm" src="Logos%20Helpy/Sea%20green/icono%20helpy%20sea%20green.png" alt="Helpy">
-        <a href="#about">¿Qué es Helpy?</a>
-        <a href="#challenges">Desafío & Solución</a>
-        <a href="#event">Evento</a>
-        <a href="#alliance">Alianza</a>
-        <a href="#contact" id="open-contact">Contacto</a>
+    <nav role="navigation" aria-label="Navegación principal">
+      <a href="#que-es">¿Qué es?</a>
+      <a href="#infra">Infraestructura</a>
+      <a href="#impacto">Impacto</a>
+      <a href="#cumbre">Cumbre</a>
+      <a href="#validacion">Validación</a>
+      <a href="#contacto">Contacto</a>
     </nav>
+  </header>
 
-    <!-- Section 1: Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="glass-card float reveal">
-                <img src="Logos%20Helpy/Sea%20green/Logotipo%20Helpy%20version%20sea%20green.png" alt="Helpy Logo"
-                    style="max-width: 250px; margin-bottom: 2rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
-                <h1 class="gradient-text">Helpy + Gobernación de Antioquia</h1>
-                <p>Innovación y Bienestar para la Infancia: Una Alianza Estratégica</p>
-            </div>
-
-            <!-- Abstract Floating Elements for composition -->
-            <div style="position: absolute; top: 20%; left: 10%; width: 100px; height: 100px; background: var(--color-pastel-pink); border-radius: 50%; filter: blur(40px); opacity: 0.6;"
-                class="float float-delay-1"></div>
-            <div style="position: absolute; bottom: 15%; right: 10%; width: 150px; height: 150px; background: var(--color-baby-blue); border-radius: 50%; filter: blur(50px); opacity: 0.5;"
-                class="float float-delay-2"></div>
-        </div>
+  <main>
+    <section class="hero container" id="inicio" aria-labelledby="hero-title">
+      <div class="card" style="width:100%">
+        <h1 id="hero-title">Helpy: centro operativo de salud preventiva para infancia y adolescencia</h1>
+        <p class="lead">Propuesta de alianza para la Gobernación de Antioquia: prevención, educación en salud y acompañamiento digital con enfoque territorial y operativo.</p>
+        <p style="margin-top:1rem"><strong>Objetivo:</strong> Reducir demanda innecesaria del sistema presencial, mejorar trazabilidad y llevar acompañamiento temprano a familias y jóvenes.</p>
+      </div>
     </section>
 
-    <!-- Section 3.6: Helpy como Política Pública (Detalle Técnico y Social) -->
-    <section id="helpy-policy-detailed">
-        <div class="container">
-            <div class="glass-card reveal">
-                <h2 class="section-title">Infraestructura Digital de Salud Pública</h2>
+    <section id="que-es" class="container" aria-labelledby="que-es-title">
+      <h2 id="que-es-title">¿Qué es Helpy?</h2>
+      <div class="grid">
+        <div class="glass">
+          <p>Helpy es una plataforma operativa y educativa que entrega información validada, rutas de acción y acompañamiento preventivo para padres, cuidadores y adolescentes. Su propósito es intervenir tempranamente para evitar agravamiento clínico y reducir fricción en la red presencial.</p>
 
-                <p>Helpy es una capa de infraestructura digital diseñada para operar como política pública: un <strong>sistema de triaje digital masivo</strong> que descongestiona la red presencial y prioriza la atención clínica según riesgo.</p>
+          <h3>Misión</h3>
+          <p>Empoderar a familias con información confiable, herramientas prácticas y acompañamiento empático para el bienestar físico y emocional de niñas, niños y adolescentes.</p>
 
-                <div class="grid-2" style="gap:2rem; margin-top:1.5rem; align-items:center;">
-                    <div>
-                        <h3>Componentes técnicos</h3>
-                        <ul>
-                            <li><strong>Motor de triaje:</strong> cuestionarios clínicos validados, score de riesgo y rutas automatizadas (autogestión, teleconsulta, derivación urgente).</li>
-                            <li><strong>Interoperabilidad:</strong> API REST/GraphQL con conectores HL7-FHIR y capa de pseudonimización para intercambio seguro.</li>
-                            <li><strong>Orquestador operativo:</strong> mensajería multicanal (Push/SMS/USSD), scheduler de campañas y soporte offline-first para veredas.</li>
-                            <li><strong>Observabilidad:</strong> pipeline de eventos (Kafka), almacenamiento geoespacial (PostGIS) y dashboards en tiempo real.</li>
-                        </ul>
-                        <p><strong>Alcance:</strong> cobertura total en los 125 municipios — multicanal (app, web ligera, USSD) — llega a la vereda lejana y al joven conectado de noche, reduciendo costos de traslado y consultas presenciales innecesarias.</p>
-                    </div>
-
-                    <div>
-                        <!-- Emotive photo placeholder (use real photos with consent) -->
-                        <!-- FOTO REAL: familia en vereda usando la app Helpy en celular; ruta sugerida: ./assets/photos/rural-hero-01.jpg -->
-                        <img class="helpy-photo" src="./assets/photos/rural-hero-01.jpg" alt="Foto rural: familia usando Helpy (foto real)">
-                    </div>
-                </div>
-
-                <div class="section-hr"></div>
-
-                <h3>Impacto social — Pilares específicos</h3>
-
-                <div style="margin-top:1rem;">
-                    <h4>A. Democratización de la Salud Mental</h4>
-                    <p>Intervención dirigida a estratos 1 y 2: módulos subsidiados de psicoeducación, screening validado y sesiones breves asincrónicas. Derivación escalonada a terapia presencial solo cuando el algoritmo identifica riesgo clínico moderado/alto. KPI objetivo: aumentar entre 60–80% las consultas iniciales en estratos vulnerables y reducir T0 de primer contacto a &lt;48 horas.</p>
-
-                    <h4>B. Anonimato como Escudo</h4>
-                    <p>Interfaz con autenticación opcional y uso de pseudónimos; workflows que permiten reportes y derivaciones sin revelar identidad hasta la autorización del usuario. Resultado: mayor tasa de consulta temprana entre adolescentes rurales, disminuyendo el subregistro y el riesgo de crisis.</p>
-
-                    <h4>C. Data para la Gobernación</h4>
-                    <p>Mapas de Calor de Salud Mental en tiempo real: agregación geoespacial (PostGIS) con ventanas temporales y alertas automáticas. Umbral operativo ejemplo: +30% de screenings con puntuación alta en 7 días → despliegue de brigada en 72 horas.</p>
-                </div>
-
-                <div class="section-hr"></div>
-
-                <h3>Cumbre de Bienestar Digital — Activación y Formación</h3>
-                <p class="reveal">Evento de lanzamiento y capacitación para articular respuesta intersectorial. Formato híbrido: presencial (Universidad CES) + transmisión masiva.</p>
-
-                <div class="grid-2" style="gap:1.5rem; margin-top:1rem; align-items:start;">
-                    <div>
-                        <h4>Módulos clínicos</h4>
-                        <ul>
-                            <li><strong>Módulo de Riesgos Digitales:</strong> ciberacoso, sexting y grooming — protocolos de notificación y protección inmediata para menores.</li>
-                            <li><strong>Módulo TCA:</strong> cribado temprano de anorexia y bulimia en colegios; checklists de derivación y seguimiento nutricional.</li>
-                            <li><strong>Módulo de Salud Mental Crítica:</strong> protocolos para depresión y ansiedad post-pandemia; pathways de respuesta 24–72 horas.</li>
-                            <li><strong>Módulo de Inclusión:</strong> diversidad sexual y prevención de discriminación como factor de riesgo suicida; plan institucional de inclusión.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <!-- Mosaico de fotos reales: profesionales y jóvenes en campo -->
-                        <div class="helpy-mosaic" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                            <img src="./assets/photos/rural-02.jpg" alt="Profesional con tablet (foto real)">
-                            <img src="./assets/photos/rural-03.jpg" alt="Adolescente recibiendo orientación (foto real)">
-                            <img src="./assets/photos/rural-04.jpg" alt="Madre consultando contenido de nutrición (foto real)">
-                            <div style="display:flex; align-items:center; justify-content:center; background:var(--color-soft); border-radius:8px; padding:8px;"><strong>Material presencial y digital</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-hr"></div>
-
-                <h3>Validación y Respaldo</h3>
-                <p>Proyecto incubado y acelerado por la élite del emprendimiento:</p>
-                <div style="display:flex; gap:1rem; align-items:center; margin-top:0.75rem;">
-                    <!-- Logos: mantengo rutas relativas solicitadas -->
-                    <img src="./assets/logos/ongoing.png" alt="Logo On-going" style="height:48px;">
-                    <img src="./assets/logos/start-fellowship.png" alt="Logo Start Fellowship" style="height:48px;">
-                </div>
-                <p style="margin-top:1rem; color:#666;">Plan de pilotaje, evaluación externa y protocolos de protección de datos conformes a normativa local (anonimización, retención mínima, consentimiento informado adaptado a menores).</p>
-
-                <div class="section-hr"></div>
-
-                <h3>Viabilidad Institucional</h3>
-                <p><strong>Helpy permite a la Gobernación cumplir metas del Plan de Desarrollo en tiempo récord, reduciendo la carga de enfermedad mental con una inversión marginal comparada con la infraestructura física. Es eficiencia presupuestal y alto impacto social inmediato.</strong></p>
-            </div>
+          <h3>Visión</h3>
+          <p>Ser la referencia regional en prevención y atención temprana infantil y adolescente, combinando educación, datos y operación sostenible.</p>
         </div>
+
+        <div class="glass">
+          <h3>Qué hacemos</h3>
+          <ul>
+            <li>Cobertura preventiva y educativo-operativa en pubertad y desarrollo.</li>
+            <li>Monitoreo nutricional y prevención de TCA.</li>
+            <li>Detección temprana y acompañamiento en salud mental.</li>
+            <li>Educación sexual y prevención en salud reproductiva.</li>
+            <li>Intervenciones sobre riesgos digitales y seguridad en línea.</li>
+          </ul>
+
+          <h3>Metas operativas</h3>
+          <ul>
+            <li>Crear comunidad activa de familias.</li>
+            <li>Disminuir consultas presenciales innecesarias.</li>
+            <li>Implementar IA para personalizar rutas educativas.</li>
+            <li>Escalar modelos B2B/B2C para sostenibilidad.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Section 1.5: About Helpy (New) -->
-    <section id="about">
-        <div class="container">
-            <div class="glass-card reveal" style="border-left: 5px solid var(--color-baby-blue);">
-                <div class="grid-2" style="align-items: center;">
-                    <div>
-                        <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem; font-size: 2rem;">¿Qué
-                            es Helpy?</h2>
-                        <p style="font-size: 1.1rem; color: #555; margin-bottom: 1.5rem;">
-                            Somos un <strong>centro de salud operativo</strong> enfocado en la prevención física y
-                            mental para niños y adolescentes. Utilizamos herramientas virtuales avanzadas e
-                            <strong>Inteligencia Artificial</strong> para democratizar el acceso al bienestar.
-                        </p>
-                        <p style="font-size: 1.1rem; color: #555;">
-                            Nuestra misión se alinea perfectamente y <strong>contribuye directamente a la Política
-                                Pública de la Gobernación de Antioquia</strong>, facilitando la cobertura, reduciendo
-                            brechas de acceso y optimizando recursos para llegar a cada rincón del departamento.
-                        </p>
-                    </div>
-                    <div style="display: flex; justify-content: center;">
-                        <!-- Using the icon here for variety -->
-                        <img src="Logos%20Helpy/Sea%20green/icono%20helpy%20sea%20green.png" alt="Helpy Icon" class="float"
-                            style="max-width: 200px; filter: drop-shadow(0 10px 15px rgba(174, 207, 232, 0.6));">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="infra" class="container" aria-labelledby="infra-title">
+      <h2 id="infra-title">Infraestructura digital y componentes</h2>
+
+      <div class="glass">
+        <p>Helpy está diseñada como una capa operativa que puede funcionar como política pública, conectando personas, profesionales e instituciones mediante componentes técnicos y operativos orientados a cobertura y trazabilidad.</p>
+
+        <h3>Componentes principales</h3>
+        <ul>
+          <li><strong>Motor de triaje:</strong> cuestionarios clínicos validados que generan score de riesgo y rutas automatizadas (autogestión, contenido, teleconsulta, derivación urgente).</li>
+          <li><strong>Interoperabilidad:</strong> API para intercambio seguro con sistemas de salud (REST/GraphQL) y mecanismos de pseudonimización para protección de datos.</li>
+          <li><strong>Orquestador operativo:</strong> mensajería multicanal (push, SMS, USSD), scheduler de campañas y soporte offline-first para zonas rurales.</li>
+          <li><strong>Observabilidad y datos:</strong> pipeline de eventos, almacenamiento geoespacial para mapas de calor y dashboards para toma de decisiones en tiempo real.</li>
+        </ul>
+
+        <p><strong>Alcance operativo:</strong> despliegue multicanal (app, web ligera, USSD) para cobertura municipal y veredal con caminos claros de escalamiento y brigadas de respuesta ante alertas.</p>
+      </div>
     </section>
 
-    <!-- Section 1.6: Nuestras 4 Especialidades -->
-    <section id="specialties" style="background: rgba(255,255,255,0.4);">
-        <div class="container">
-            <h2 class="section-title reveal">Nuestras 4 Especialidades</h2>
-            <div class="grid-2">
-                <!-- Salud Mental (Blue) -->
-                <div class="glass-card reveal" style="border-top: 5px solid #2B6CB0;">
-                    <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1rem;">
-                        <img src="Logos%20Helpy/Clectic%20Blue/icono%20helpy%20clectic%20blue.png" alt="Salud Mental"
-                            style="width:60px; height:auto;">
-                        <h3 style="color:#2B6CB0;">Salud Mental</h3>
-                    </div>
-                    <p>Transformamos la preocupación en acompañamiento. Abordamos la prevención de riesgos digitales, el
-                        manejo de la ansiedad y la higiene del sueño para un crecimiento emocional sano.</p>
-                </div>
+    <section id="impacto" class="container" aria-labelledby="impacto-title">
+      <h2 id="impacto-title">Impacto social y Pilares</h2>
 
-                <!-- Salud Reproductiva (Pink) -->
-                <div class="glass-card reveal float-delay-1" style="border-top: 5px solid #D53F8C;">
-                    <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1rem;">
-                        <img src="Logos%20Helpy/Baby%20pink/icono%20helpy%20baby%20pink.png" alt="Salud Reproductiva"
-                            style="width:60px; height:auto;">
-                        <h3 style="color:#D53F8C;">Salud Reproductiva</h3>
-                    </div>
-                    <p>Orientación integral sobre el desarrollo biológico y la pubertad. Promovemos el autoconocimiento
-                        y una relación saludable con el cuerpo durante la transición adolescente.</p>
-                </div>
+      <div class="grid">
+        <div class="glass">
+          <h3>A. Democratización de la salud mental</h3>
+          <p>Módulos subsidiados de psicoeducación y screenings validados. Derivación escalonada a intervención presencial solo cuando el triaje detecta riesgo moderado/alto.</p>
+          <p>KPI objetivo: aumentar consultas iniciales en estratos vulnerables y reducir tiempo al primer contacto a menos de 48 horas.</p>
 
-                <!-- Cambios Físicos (Yellow/Bitter Lemon) -->
-                <div class="glass-card reveal float-delay-2" style="border-top: 5px solid #D69E2E;">
-                    <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1rem;">
-                        <img src="Logos%20Helpy/Bitter%20lemon/icono%20helpy%20Bitter%20lemon.png" alt="Cambios Físicos"
-                            style="width:60px; height:auto;">
-                        <h3 style="color:#D69E2E; font-size:1.4rem;">Cambios Físicos y Metabólicos</h3>
-                    </div>
-                    <p>Monitoreo del crecimiento cuando el movimiento disminuye. Entendemos cómo los cambios metabólicos
-                        afectan el bienestar general.</p>
-                </div>
-
-                <!-- Nutrición (Green) -->
-                <div class="glass-card reveal" style="border-top: 5px solid #2F855A;">
-                    <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1rem;">
-                        <img src="Logos%20Helpy/Sea%20green/icono%20helpy%20sea%20green.png" alt="Nutrición"
-                            style="width:60px; height:auto;">
-                        <h3 style="color:#2F855A;">Nutrición</h3>
-                    </div>
-                    <p>Alimentación consciente y prevención de TCA. Un enfoque que combina el rigor nutricional con el
-                        acompañamiento psicológico.</p>
-                </div>
-            </div>
+          <h3>B. Anonimato como escudo</h3>
+          <p>Autenticación opcional y uso de pseudónimos para permitir consultas tempranas sin exposición, facilitando el acceso de adolescentes y reduciendo subregistro.</p>
         </div>
+
+        <div class="glass">
+          <h3>C. Data para la Gobernación</h3>
+          <p>Mapas de calor geoespaciales y alertas operativas. Umbral ejemplo: +30% de screenings con puntuación alta en 7 días → despliegue de brigada en 72 horas.</p>
+
+          <h3>D. Cobertura y sostenibilidad</h3>
+          <p>Ofrecer un modelo económico accesible que permita escalamiento: ejemplo operativo de precios y licenciamiento para entidades educativas y gubernamentales.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Section 2: El Desafío y La Solución -->
-    <section id="challenges">
-        <div class="container">
-            <h2 class="section-title reveal">El Futuro de la Atención Infantil</h2>
-            <div class="grid-2">
-                <div class="glass-card reveal float-delay-1" style="border-left: 5px solid #E53E3E;">
-                    <h3>El Desafío Actual</h3>
-                    <p style="margin-top: 1rem; color: #555;">La Gobernación enfrenta grandes retos en
-                        <strong>cobertura</strong> y una trazabilidad lenta en la atención.
-                    </p>
-                    <ul style="margin-top: 1.5rem; list-style-position: inside; color: #666;">
-                        <li>Procesos burocráticos y tediosos.</li>
-                        <li>Dificultad para llegar a zonas remotas.</li>
-                        <li>Falta de seguimiento continuo.</li>
-                    </ul>
-                </div>
-                <div class="glass-card reveal" style="border-left: 5px solid #38B2AC;">
-                    <h3>La Solución Helpy</h3>
-                    <p style="margin-top: 1rem; color: #555;">Tecnología aplicada para transformar el control en
-                        <strong>acompañamiento real</strong>.
-                    </p>
-                    <ul style="margin-top: 1.5rem; list-style-position: inside; color: #666;">
-                        <li>Salud preventiva a bajo costo.</li>
-                        <li>Inteligencia Artificial para triaje y seguimiento.</li>
-                        <li>Operatividad inmediata sin burocracia.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <section id="cumbre" class="container" aria-labelledby="cumbre-title">
+      <h2 id="cumbre-title">Cumbre de Bienestar Digital — Activación y formación</h2>
+
+      <div class="glass">
+        <p>Evento híbrido (presencial + streaming) para articular respuesta intersectorial, capacitar actores locales y sensibilizar comunidades educativas y familias. Actividades de la cumbre:</p>
+
+        <ul>
+          <li>Formación de brigadas locales y equipos municipales.</li>
+          <li>Capacitaciones para docentes y personal de salud en cribados y rutas de derivación.</li>
+          <li>Sesiones públicas sobre riesgos digitales y prevención.</li>
+        </ul>
+
+        <h3>Módulos clínicos propuestos</h3>
+        <ul>
+          <li>Riesgos digitales: protocolos de notificación y protección inmediata.</li>
+          <li>TCA: cribado temprano en colegios y seguimiento nutricional.</li>
+          <li>Salud mental crítica: protocolos de respuesta 24–72 horas.</li>
+          <li>Inclusión: derechos, diversidad sexual y prevención de discriminación.</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:1rem" class="glass">
+        <h3>Servicios y programas</h3>
+        <ul>
+          <li>Plataforma con quiz personalizado que despliega recursos según urgencia.</li>
+          <li>Acompañamiento profesional digital y orientaciones prácticas.</li>
+          <li>Programas institucionales para colegios y entidades públicas.</li>
+          <li>Eventos presenciales y formación continua.</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Section 3: Evento Helpy 2.0 -->
-    <section id="event">
-        <div class="container">
-            <div class="glass-card reveal">
-                <div class="grid-2" style="align-items: center;">
-                    <div>
-                        <span
-                            style="color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 0.9rem;">El
-                            Gran Hito</span>
-                        <h2 style="font-size: 3rem; margin: 1rem 0;">Evento Helpy 2.0</h2>
-                        <p style="font-size: 1.2rem;">"Adolescencia en modo vida real: tecnología, cuerpo y mente"</p>
-                        <p style="margin-top: 1rem;
-                            color: #555;"><strong>📍 Universidad CES | 📅 Mayo 2026</strong></p>
+    <section id="validacion" class="container" aria-labelledby="validacion-title">
+      <h2 id="validacion-title">Validación, respaldo y alianzas</h2>
 
-                        <div class="speakers">
-                            <div class="chip">
-                                <div class="avatar">VA</div>Dra. Verónica Abad <span>(Endocrinóloga)</span>
-                            </div>
-                            <div class="chip">
-                                <div class="avatar">RA</div>Dr. Rommel Andrade <span>(Psiquiatra)</span>
-                            </div>
-                            <div class="chip">
-                                <div class="avatar">JR</div>Juliana Ramírez <span>(Nutricionista)</span>
-                            </div>
-                            <div class="chip">
-                                <div class="avatar">CL</div>Carlos López <span>(Neuropsicólogo)</span>
-                            </div>
-                            <div class="chip">
-                                <div class="avatar">EG</div>Elizabeth Gómez <span>(Terapia Familiar)</span>
-                            </div>
-                            <div class="chip">
-                                <div class="avatar">SV</div>Sara Valencia <span>(Directiva)</span>
-                            </div>
-                            <div class="chip" style="background: var(--color-primary); color: white; border:none;">
-                                <div class="avatar" style="background:white; color:var(--color-primary);">+</div>
-                                Invitados Sorpresa (>500k)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metrics">
-                        <div>
-                            <div class="metric-value counter" data-target="400">0</div>
-                            <p>Asistentes Presenciales</p>
-                        </div>
-                        <div>
-                            <div class="metric-value counter" data-target="1000000">0</div>
-                            <p>Vistas Digitales</p>
-                        </div>
-                        <div>
-                            <div class="metric-value counter" data-target="8">0</div>
-                            <p>Instituciones Aliadas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="glass">
+        <p>Helpy ha sido validado con familias reales y cuenta con alianzas en programas de incubación y aceleración. Se propone un plan de pilotaje con evaluación externa y protocolos de protección de datos (anonimización, retención mínima y consentimiento informado para menores).</p>
+
+        <div class="logos" style="margin-top:1rem">
+          <img src="./assets/logos/ongoing.png" alt="On-going" style="height:48px">
+          <img src="./assets/logos/start-fellowship.png" alt="Start Fellowship" style="height:48px">
         </div>
+      </div>
     </section>
 
-    <!-- Section 3.5: Tecnología y Política Pública -->
-    <section id="policy" style="padding-top: 0;">
-        <div class="container">
-            <h2 class="section-title reveal">Plataforma & Impacto Social</h2>
-            <div class="grid-2">
-                <div class="glass-card reveal"
-                    style="background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(223,247,238,0.5) 100%);">
-                    <h3>📱 Plataforma Interactiva</h3>
-                    <p style="margin: 1rem 0;">Democratizamos el acceso a la salud mediante:</p>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom:0.5rem">✅ <strong>IA para Triaje:</strong> Análisis inteligente para
-                            detección temprana.</li>
-                        <li style="margin-bottom:0.5rem">✅ <strong>Bajo Costo:</strong> Accesibilidad real para familias
-                            de todos los estratos.</li>
-                        <li style="margin-bottom:0.5rem">✅ <strong>Seguimiento Continuo:</strong> Monitoreo 24/7 sin
-                            barreras físicas.</li>
-                    </ul>
-                </div>
-                <div class="glass-card reveal"
-                    style="background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(56,178,172,0.1) 100%);">
-                    <h3>🏛️ Política Pública</h3>
-                    <p style="margin: 1rem 0;">Una herramienta potente para la Gobernación:</p>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom:0.5rem">✅ <strong>Cobertura Total:</strong> Llegamos a zonas sin
-                            infraestructura hospitalaria.</li>
-                        <li style="margin-bottom:0.5rem">✅ <strong>Cero Burocracia:</strong> Atención inmediata sin
-                            "trazabilidad larga".</li>
-                        <li style="margin-bottom:0.5rem">✅ <strong>Impacto Medible:</strong> Datos reales para la toma
-                            de decisiones públicas.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <section id="modelo" class="container" aria-labelledby="modelo-title">
+      <h2 id="modelo-title">Modelo de sostenibilidad y ejemplo de pricing</h2>
+      <div class="glass">
+        <p>Modelo de licenciamiento y micro‑suscripción escalable. Ejemplo operativo: desde 10.000 usuarios se propone una suscripción mensual orientativa de 1.000 COP por usuario que permite escalabilidad sin afectar acceso.</p>
+        <p>Opciones B2B para instituciones y B2C para familias con esquemas subsidiados para población vulnerable.</p>
+      </div>
     </section>
 
-    <!-- Section 4: Niveles de Alianza -->
-    <section id="alliance">
-        <div class="container">
-            <h2 class="section-title reveal">Oportunidades de Alianza</h2>
-            <div class="pricing-grid">
-                <!-- Bronze -->
-                <div class="glass-card price-card reveal float-delay-2">
-                    <h3>Bronce / Plata</h3>
-                    <p class="price">$5M - $10M</p>
-                    <ul class="price-features">
-                        <li>Presencia de marca digital</li>
-                        <li>Menciones en evento</li>
-                        <li>Entradas de cortesía</li>
-                    </ul>
-                </div>
+    <section id="contacto" class="container" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Contacto y formalización</h2>
 
-                <!-- Gold -->
-                <div class="glass-card price-card reveal float-delay-1">
-                    <h3>Oro</h3>
-                    <p class="price">$25M</p>
-                    <ul class="price-features">
-                        <li>200 Entradas incluidas</li>
-                        <li>Stand de marca destacado</li>
-                        <li>Base de datos de asistentes</li>
-                        <li>Campaña en redes conjunta</li>
-                    </ul>
-                </div>
+      <div class="grid">
+        <form class="glass" onsubmit="event.preventDefault(); sendMail();">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" required>
 
-                <!-- Diamond -->
-                <div class="glass-card price-card featured reveal float">
-                    <h3>Diamante</h3>
-                    <p class="price">$50M</p>
-                    <ul class="price-features">
-                        <li><strong>Co-creador del evento</strong></li>
-                        <li>Charla exclusiva de 20 min</li>
-                        <li>Stand Premium en ingreso</li>
-                        <li>Logo en todo el material</li>
-                        <li>Acceso VIP a Speakers</li>
-                    </ul>
-                </div>
-            </div>
-            <p class="reveal" style="text-align: center; margin-top: 3rem; font-style: italic; color: #555;">La
-                Gobernación como aliado protagonista para masificar el bienestar.</p>
+          <label for="email">Correo</label>
+          <input id="email" type="email" required>
+
+          <label for="org">Entidad / Cargo (opcional)</label>
+          <input id="org" name="org">
+
+          <label for="message">Mensaje</label>
+          <textarea id="message" rows="5" required></textarea>
+
+          <div style="margin-top:.75rem;display:flex;gap:.5rem;justify-content:flex-end">
+            <button class="btn" type="submit">Enviar</button>
+          </div>
+        </form>
+
+        <div class="glass">
+          <h3>Contacto</h3>
+          <p class="muted"><strong>Email:</strong> contacto@helpy.org</p>
+          <p class="muted"><strong>Teléfono:</strong> +57 300 000 0000</p>
+          <p class="muted">Al enviar nos pondremos en contacto para coordinar la reunión inicial y plan de pilotaje.</p>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Section 5: CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="glass-card reveal" style="display: inline-block; padding: 4rem;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Hagamos historia en la salud pública de Antioquia
-                </h2>
-                <p>La tecnología y la humanidad unidas por nuestros niños y adolescentes.</p>
-                <button class="btn" id="formalize-btn">Formalizar Alianza</button>
-                <a href="helpy_proposal.pdf" download style="display:inline-block; margin-left:1rem; padding:0.9rem 1.2rem; border-radius:999px; background:transparent; border:1px solid rgba(15,23,32,0.06); color:var(--text-dark); text-decoration:none; font-weight:600;">Descargar propuesta (PDF)</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Modal (hidden by default) -->
-    <div id="contact" aria-hidden="true" style="position:relative; width:0; height:0; overflow:hidden;
-    "></div>
-    <div class="modal-backdrop" id="modal-backdrop">
-        <div class="modal glass-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <button class="modal-close" id="modal-close">✕</button>
-            <h3 id="modal-title">Contacto y Formalización de Alianza</h3>
-            <p>Déjanos un mensaje y nos pondremos en contacto para agendar la reunión inicial.</p>
-            <form id="contact-form">
-                <input class="input" type="text" name="name" id="name" placeholder="Nombre completo" required>
-                <input class="input" type="email" name="email" id="email" placeholder="Correo electrónico" required>
-                <input class="input" type="text" name="org" id="org" placeholder="Entidad / Cargo (opcional)">
-                <textarea class="input" name="message" id="message" rows="5" placeholder="Mensaje" required></textarea>
-                <div style="display:flex; gap:0.75rem; justify-content:flex-end;">
-                    <button type="button" class="btn" id="modal-submit">Enviar</button>
-                    <button type="button" class="btn" id="modal-cancel"
-                        style="background:linear-gradient(90deg,#a0aec0,#cbd5e0); color:#0f1720;">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // Intersection Observer for Reveal Animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Optional: Unobserve if you only want it to happen once
-                        // observer.unobserve(entry.target); 
-
-                        // Trigger counter if it's inside the viewed element
-                        const counters = entry.target.querySelectorAll('.counter');
-                        counters.forEach(counter => startCounter(counter));
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-        // Number Counter Animation
-        function startCounter(el) {
-            if (el.dataset.started === "true") return;
-            el.dataset.started = "true";
-
-            const target = +el.getAttribute('data-target');
-            const duration = 2000; // ms
-            const increment = target / (duration / 16); // 60fps
-
-            let current = 0;
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    el.innerText = formatNumber(Math.ceil(current));
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    el.innerText = formatNumber(target) + (target > 1000 ? "+" : "");
-                }
-            };
-            updateCounter();
-        }
-
-        function formatNumber(num) {
-            if (num >= 1000000) return (num / 1000000).toFixed(0) + "M";
-            return num;
-        }
-
-        // Smooth Hover effect for cards (3D tilt hint)
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                // Very subtle tilt
-                // card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2) / 50}deg) rotateY(${-(x - rect.width/2) / 50}deg) translateY(-5px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                // Return to original state (handled by CSS transition mostly, but clearing inline styles)
-                // card.style.transform = '';
-            });
-        });
-
-        // Smooth scroll for nav links
-        document.querySelectorAll('nav.site-nav a[href^="#"]').forEach(a => {
-            a.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Modal handling
-        const backdrop = document.getElementById('modal-backdrop');
-        const openContact = document.getElementById('open-contact');
-        const formalizeBtn = document.getElementById('formalize-btn');
-        const closeBtn = document.getElementById('modal-close');
-        const cancelBtn = document.getElementById('modal-cancel');
-
-        function openModal() { backdrop.style.display = 'flex'; document.getElementById('name').focus(); }
-        function closeModal() { backdrop.style.display = 'none'; }
-
-        if (openContact) openContact.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
-        if (formalizeBtn) formalizeBtn.addEventListener('click', openModal);
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
-        backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
-
-        // Contact form submission: mailto fallback
-        document.getElementById('modal-submit').addEventListener('click', () => {
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const org = document.getElementById('org').value.trim();
-            const message = document.getElementById('message').value.trim();
-            if (!name || !email || !message) { alert('Por favor completa los campos requeridos.'); return; }
-
-            const subject = encodeURIComponent('Solicitud de alianza - Helpy x Gobernación de Antioquia');
-            const body = encodeURIComponent(`Nombre: ${name}%0AEntidad/Cargo: ${org}%0ACorreo: ${email}%0A%0AMensaje:%0A${message}`);
-
-            // Open mail client
-            window.location.href = `mailto:contacto@helpy.org?subject=${subject}&body=${body}`;
-            closeModal();
-        });
-    </script>
-</body>
-
-<!-- Footer -->
-<footer style="text-align:center; padding:2rem 1rem; background:transparent; color:var(--text-muted);">
+  <footer>
     <div class="container">
-        <p style="margin-bottom:0.25rem;">Contacto: <strong>contacto@helpy.org</strong> • Tel: +57 300 000 0000</p>
-        <p style="font-size:0.9rem; margin-top:0.25rem;">Última actualización: 2 de febrero de 2026 — Propuesta para la
-            Gobernación de Antioquia</p>
-        <p style="margin-top:0.5rem;"><a href="helpy_proposal.pdf" download style="color:var(--color-primary); font-weight:700; text-decoration:none;">Descargar propuesta (PDF)</a></p>
+      <p class="muted">Última actualización: según documento maestro "HELPY + gob.antioquia".</p>
     </div>
-</footer>
+  </footer>
 
+  <script>
+    function sendMail(){
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const email = encodeURIComponent(document.getElementById('email').value.trim());
+      const org = encodeURIComponent(document.getElementById('org').value.trim());
+      const msg = encodeURIComponent(document.getElementById('message').value.trim());
+      if(!name||!email||!msg){alert('Completa los campos requeridos.');return}
+      const subject = encodeURIComponent('Solicitud de alianza - Helpy x Gobernación de Antioquia');
+      const body = `Nombre: ${name}%0AEntidad/Cargo: ${org}%0ACorreo: ${email}%0A%0AMensaje:%0A${msg}`;
+      location.href = `mailto:contacto@helpy.org?subject=${subject}&body=${body}`;
+    }
+  </script>
+
+</body>
 </html>
