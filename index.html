@@ -424,6 +424,32 @@
                 gap: 2rem;
             }
         }
+
+        /* Helpy policy detailed block tweaks to match site visuals */
+        #helpy-policy-detailed .glass-card {
+            padding: 2.5rem;
+        }
+
+        #helpy-policy-detailed .helpy-photo {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            max-height: 320px;
+            box-shadow: 0 8px 30px rgba(47,133,90,0.06);
+        }
+
+        #helpy-policy-detailed .helpy-mosaic img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        #helpy-policy-detailed .section-hr {
+            margin: 2rem 0;
+            border: none;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
     </style>
 </head>
 
@@ -457,6 +483,93 @@
                 class="float float-delay-1"></div>
             <div style="position: absolute; bottom: 15%; right: 10%; width: 150px; height: 150px; background: var(--color-baby-blue); border-radius: 50%; filter: blur(50px); opacity: 0.5;"
                 class="float float-delay-2"></div>
+        </div>
+    </section>
+
+    <!-- Section 3.6: Helpy como Política Pública (Detalle Técnico y Social) -->
+    <section id="helpy-policy-detailed">
+        <div class="container">
+            <div class="glass-card reveal">
+                <h2 class="section-title">Infraestructura Digital de Salud Pública</h2>
+
+                <p>Helpy es una capa de infraestructura digital diseñada para operar como política pública: un <strong>sistema de triaje digital masivo</strong> que descongestiona la red presencial y prioriza la atención clínica según riesgo.</p>
+
+                <div class="grid-2" style="gap:2rem; margin-top:1.5rem; align-items:center;">
+                    <div>
+                        <h3>Componentes técnicos</h3>
+                        <ul>
+                            <li><strong>Motor de triaje:</strong> cuestionarios clínicos validados, score de riesgo y rutas automatizadas (autogestión, teleconsulta, derivación urgente).</li>
+                            <li><strong>Interoperabilidad:</strong> API REST/GraphQL con conectores HL7-FHIR y capa de pseudonimización para intercambio seguro.</li>
+                            <li><strong>Orquestador operativo:</strong> mensajería multicanal (Push/SMS/USSD), scheduler de campañas y soporte offline-first para veredas.</li>
+                            <li><strong>Observabilidad:</strong> pipeline de eventos (Kafka), almacenamiento geoespacial (PostGIS) y dashboards en tiempo real.</li>
+                        </ul>
+                        <p><strong>Alcance:</strong> cobertura total en los 125 municipios — multicanal (app, web ligera, USSD) — llega a la vereda lejana y al joven conectado de noche, reduciendo costos de traslado y consultas presenciales innecesarias.</p>
+                    </div>
+
+                    <div>
+                        <!-- Emotive photo placeholder (use real photos with consent) -->
+                        <!-- FOTO REAL: familia en vereda usando la app Helpy en celular; ruta sugerida: ./assets/photos/rural-hero-01.jpg -->
+                        <img class="helpy-photo" src="./assets/photos/rural-hero-01.jpg" alt="Foto rural: familia usando Helpy (foto real)">
+                    </div>
+                </div>
+
+                <div class="section-hr"></div>
+
+                <h3>Impacto social — Pilares específicos</h3>
+
+                <div style="margin-top:1rem;">
+                    <h4>A. Democratización de la Salud Mental</h4>
+                    <p>Intervención dirigida a estratos 1 y 2: módulos subsidiados de psicoeducación, screening validado y sesiones breves asincrónicas. Derivación escalonada a terapia presencial solo cuando el algoritmo identifica riesgo clínico moderado/alto. KPI objetivo: aumentar entre 60–80% las consultas iniciales en estratos vulnerables y reducir T0 de primer contacto a &lt;48 horas.</p>
+
+                    <h4>B. Anonimato como Escudo</h4>
+                    <p>Interfaz con autenticación opcional y uso de pseudónimos; workflows que permiten reportes y derivaciones sin revelar identidad hasta la autorización del usuario. Resultado: mayor tasa de consulta temprana entre adolescentes rurales, disminuyendo el subregistro y el riesgo de crisis.</p>
+
+                    <h4>C. Data para la Gobernación</h4>
+                    <p>Mapas de Calor de Salud Mental en tiempo real: agregación geoespacial (PostGIS) con ventanas temporales y alertas automáticas. Umbral operativo ejemplo: +30% de screenings con puntuación alta en 7 días → despliegue de brigada en 72 horas.</p>
+                </div>
+
+                <div class="section-hr"></div>
+
+                <h3>Cumbre de Bienestar Digital — Activación y Formación</h3>
+                <p class="reveal">Evento de lanzamiento y capacitación para articular respuesta intersectorial. Formato híbrido: presencial (Universidad CES) + transmisión masiva.</p>
+
+                <div class="grid-2" style="gap:1.5rem; margin-top:1rem; align-items:start;">
+                    <div>
+                        <h4>Módulos clínicos</h4>
+                        <ul>
+                            <li><strong>Módulo de Riesgos Digitales:</strong> ciberacoso, sexting y grooming — protocolos de notificación y protección inmediata para menores.</li>
+                            <li><strong>Módulo TCA:</strong> cribado temprano de anorexia y bulimia en colegios; checklists de derivación y seguimiento nutricional.</li>
+                            <li><strong>Módulo de Salud Mental Crítica:</strong> protocolos para depresión y ansiedad post-pandemia; pathways de respuesta 24–72 horas.</li>
+                            <li><strong>Módulo de Inclusión:</strong> diversidad sexual y prevención de discriminación como factor de riesgo suicida; plan institucional de inclusión.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <!-- Mosaico de fotos reales: profesionales y jóvenes en campo -->
+                        <div class="helpy-mosaic" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                            <img src="./assets/photos/rural-02.jpg" alt="Profesional con tablet (foto real)">
+                            <img src="./assets/photos/rural-03.jpg" alt="Adolescente recibiendo orientación (foto real)">
+                            <img src="./assets/photos/rural-04.jpg" alt="Madre consultando contenido de nutrición (foto real)">
+                            <div style="display:flex; align-items:center; justify-content:center; background:var(--color-soft); border-radius:8px; padding:8px;"><strong>Material presencial y digital</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-hr"></div>
+
+                <h3>Validación y Respaldo</h3>
+                <p>Proyecto incubado y acelerado por la élite del emprendimiento:</p>
+                <div style="display:flex; gap:1rem; align-items:center; margin-top:0.75rem;">
+                    <!-- Logos: mantengo rutas relativas solicitadas -->
+                    <img src="./assets/logos/ongoing.png" alt="Logo On-going" style="height:48px;">
+                    <img src="./assets/logos/start-fellowship.png" alt="Logo Start Fellowship" style="height:48px;">
+                </div>
+                <p style="margin-top:1rem; color:#666;">Plan de pilotaje, evaluación externa y protocolos de protección de datos conformes a normativa local (anonimización, retención mínima, consentimiento informado adaptado a menores).</p>
+
+                <div class="section-hr"></div>
+
+                <h3>Viabilidad Institucional</h3>
+                <p><strong>Helpy permite a la Gobernación cumplir metas del Plan de Desarrollo en tiempo récord, reduciendo la carga de enfermedad mental con una inversión marginal comparada con la infraestructura física. Es eficiencia presupuestal y alto impacto social inmediato.</strong></p>
+            </div>
         </div>
     </section>
 
